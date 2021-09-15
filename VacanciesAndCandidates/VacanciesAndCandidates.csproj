@@ -70,8 +70,15 @@
     </ApplicationDefinition>
     <Compile Include="DatabaseSettings\CandidateContext.cs" />
     <Compile Include="DatabaseSettings\VacansyContext.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModelsActions\CandidateAction.cs" />
     <Compile Include="Models\VacansyModel.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Views\ShowCandidateWindow.xaml.cs">
+      <DependentUpon>ShowCandidateWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\CreateCandidateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,10 +87,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CandidateModel.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\CreateCandidateWindow.xaml.cs">
+      <DependentUpon>CreateCandidateWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowCandidateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

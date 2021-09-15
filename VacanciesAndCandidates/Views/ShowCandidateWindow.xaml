@@ -1,0 +1,29 @@
+﻿<Window x:Class="VacanciesAndCandidates.ShowCandidateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VacanciesAndCandidates"
+        mc:Ignorable="d"
+        Title="Список кандидатов" Height="450" Width="800">
+    <Grid>
+        <StackPanel  Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+            <TextBlock  Text="Кандидаты"/>
+            <ListBox x:Name="CandidateList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="First_name" />
+                                    <Binding Path="Last_name"  />
+                                    <Binding Path="Middle_name"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>
