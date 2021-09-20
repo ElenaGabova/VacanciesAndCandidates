@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VacanciesAndCandidates.ModelsActions.CandidateAction;
 using VacanciesAndCandidates.Models.CandidateModel;
+using VacanciesAndCandidates.ModelsActions.VacancyAction;
+using VacanciesAndCandidates.Models.VacansyModel;
 
 namespace VacanciesAndCandidates
 {
@@ -28,7 +30,9 @@ namespace VacanciesAndCandidates
         public CreateCandidateWindow()
         {
             InitializeComponent();
+            vacancyBox.ItemsSource = VacancyAction.GetVacancy();
         }
+
         public CreateCandidateWindow(CandidateModel c)
         {
             InitializeComponent();
@@ -41,11 +45,14 @@ namespace VacanciesAndCandidates
             Email.Text = Candidate.Email;
             dt_birthday.Text = Convert.ToString(Candidate.Dt_birthday);
             gender.IsChecked = Candidate.Gender;
+            vacancyBox.ItemsSource = VacancyAction.GetVacancy();
+            vacancyBox.SelectedItem = VacancyAction.GetVacancyByID(c.VacancyID);
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
         }
+
 
         private void CreateCadidate_Click(object sender, RoutedEventArgs e)
         {
@@ -63,20 +70,31 @@ namespace VacanciesAndCandidates
 
             bool inputNotCorrect = false;
             string resultText = string.Empty;
-            
-            CandidateAction.AddCandidate(sqlParameters,
-                                         (bool)gender.IsChecked,
-                                         out inputNotCorrect,
-                                         out resultText);
+            var vacancy = (VacansyModel)vacancyBox.SelectedItem;
+            int? vacancyId = vacancy?.Id;
+
+            if (Candidate is null)
+
+                CandidateAction.AddCandidate(sqlParameters,
+                                             (bool)gender.IsChecked,
+                                             vacancyId,
+                                             out inputNotCorrect,
+                                             out resultText);
+            else
+                CandidateAction.UpdateCandidate(Candidate.Id, 
+                                                sqlParameters,
+                                                (bool)gender.IsChecked,
+                                                vacancyId,
+                                                out inputNotCorrect,
+                                                out resultText);
+
 
             var textColor = Colors.Red;
+
             if (!inputNotCorrect)
             {
-                FullName.Text = string.Empty;
-                Email.Text    = string.Empty;
-                dt_birthday.Text = string.Empty;
-                gender.IsChecked = true;
-                textColor = Colors.Green ;
+                textColor = Colors.Green;
+                this.IsEnabled = false;
             }
 
             infoTextBlock.Text = resultText;

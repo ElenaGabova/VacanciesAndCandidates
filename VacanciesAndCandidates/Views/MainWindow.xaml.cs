@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using VacanciesAndCandidates.Views;
 
 namespace VacanciesAndCandidates
 {
@@ -33,6 +34,17 @@ namespace VacanciesAndCandidates
         private void ShowCandidate_Click(object sender, RoutedEventArgs e)
         {
             ShowCandidateWindow window = new ShowCandidateWindow();
+            window.Show();
+        }
+        private void AddVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            CreateVacancyWindow window = new CreateVacancyWindow();
+            window.Show();
+        }
+
+        private void ShowVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            ShowVacancyWindow window = new ShowVacancyWindow();
             window.Show();
         }
     }

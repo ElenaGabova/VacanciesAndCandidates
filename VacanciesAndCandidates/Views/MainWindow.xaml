@@ -5,22 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VacanciesAndCandidates"
         mc:Ignorable="d"
-        Title="Вакансии и кандидаты" Height="450" Width="800">
+        Title="Вакансии и кандидаты" Height="400" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="Styles.xaml"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="30" ></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25" ></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition Width="220"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="AddCandidate" Content="Создать кандидата" Click="AddCandidate_Click"/>
-        <Button x:Name="ShowCandidate" Content="Посмотреть список кандидатов" Click="ShowCandidate_Click" Grid.Row="1"/>
+        <Button x:Name="AddCandidate" Content="Создать кандидата" Click="AddCandidate_Click" Grid.Column="1"/>
+        <Button x:Name="ShowCandidate" Content="Посмотреть список кандидатов" Click="ShowCandidate_Click" Grid.Row="1" Grid.Column="1"/>
+
+        <Button x:Name="AddVacancy" Content="Создать вакансию" Click="AddVacancy_Click" Grid.Row="3" Grid.Column="1"/>
+        <Button x:Name="ShowVacancy" Content="Посмотреть список вакансий" Click="ShowVacancy_Click" Grid.Row="4" Grid.Column="1"/>
     </Grid>
 </Window>

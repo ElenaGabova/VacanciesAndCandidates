@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using VacanciesAndCandidates.ModelsActions.CandidateAction;
+using VacanciesAndCandidates.Models.CandidateModel;
 
 namespace VacanciesAndCandidates
 {
@@ -24,8 +25,19 @@ namespace VacanciesAndCandidates
         { 
             InitializeComponent();
             CandidateList.ItemsSource = CandidateAction.GetCandidate();
-            var t = CandidateList.Items[0];
+        }
 
+        public void UpdateCandidate(object sender, EventArgs e)
+        {
+            CreateCandidateWindow window = new CreateCandidateWindow((CandidateModel)CandidateList.SelectedItem);
+            window.Show();
+        }
+
+        public void DeleteCandidate(object sender, EventArgs e)
+        {
+            var item = CandidateList.SelectedItem as CandidateModel;
+            CandidateAction.DeleteCandidate(item.Id);
+            CandidateList.ItemsSource = CandidateAction.GetCandidate();
         }
     }
 }

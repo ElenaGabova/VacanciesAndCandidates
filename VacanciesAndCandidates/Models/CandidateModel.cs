@@ -19,7 +19,9 @@ namespace VacanciesAndCandidates.Models.CandidateModel
 			   email;
 
 		DateTime dt_birthday;
-		bool gender;
+        bool gender;
+        int rec_Active;
+        int vacancyID;
         
         [Key]
         public int Id { get; set; }
@@ -60,6 +62,16 @@ namespace VacanciesAndCandidates.Models.CandidateModel
             }
         }
 
+        public int VacancyID
+        {
+            get { return vacancyID; }
+            set
+            {
+                vacancyID = value;
+                OnPropertyChanged("VacancyID");
+            }
+        }
+
         public DateTime Dt_birthday
         {
             get { return dt_birthday; }
@@ -76,6 +88,15 @@ namespace VacanciesAndCandidates.Models.CandidateModel
             {
                 gender = value;
                 OnPropertyChanged("Gender");
+            }
+        }
+        public int Rec_Active
+        {
+            get { return rec_Active; }
+            set
+            {
+                rec_Active = value;
+                OnPropertyChanged("Rec_Active");
             }
         }
 
